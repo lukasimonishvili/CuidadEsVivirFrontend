@@ -28,7 +28,7 @@ const StyledButton = Styled.button`
 const Button = ({ onClick, icon, text }) => {
   return (
     <StyledButton onClick={onClick}>
-      {text} Acceder - {">"}{icon && <img src={icon} alt=" " />}
+      {text} {icon && <img src={icon} alt=" " />}
     </StyledButton>
   );
 };
