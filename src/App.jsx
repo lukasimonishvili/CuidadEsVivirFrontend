@@ -5,11 +5,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/DashBoard";
 import Profile from "./pages/Profile";
-import CreateTask from "./pages/CreateTask";
-import TaskDetail from "./pages/TaskDetail";
+// import CreateTask from "./pages/CreateTask";
+// import TaskDetail from "./pages/TaskDetail";
 import CreateEvent from "./pages/CreateEvent";
 import EventDetail from "./pages/EventDetail";
-import Ayudados from "./pages/Ayudados";
+// import Ayudados from "./pages/Ayudados";
 import { useUser } from "./UserContext";
 
 // const StyledMain = Styled.main`
@@ -47,16 +47,16 @@ export default function App() {
         path="/profile"
         element={userRole ? <Profile /> : <Navigate to="/login" />}
       />
-      <Route
+      {/* <Route
         path="/create-task"
         element={
           userRole === "admin" ? <CreateTask /> : <Navigate to="/dashboard" />
         }
-      />
-      <Route
+      /> */}
+      {/* <Route
         path="/task/:id"
         element={userRole ? <TaskDetail /> : <Navigate to="/login" />}
-      />
+      /> */}
       <Route
         path="/create-event"
         element={
@@ -67,10 +67,10 @@ export default function App() {
         path="/event/:id"
         element={userRole ? <EventDetail /> : <Navigate to="/login" />}
       />
-      <Route
+      {/* <Route
         path="/ayudados"
         element={userRole ? <Ayudados /> : <Navigate to="/login" />}
-      />
+      /> */}
     </Routes>
   );
 }
