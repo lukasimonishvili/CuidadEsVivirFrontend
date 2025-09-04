@@ -1,0 +1,9 @@
+:root {
+  --primary-color: #4F46E5; /* morado Figma */
+  --secondary-color: #FBBF24; /* amarillo Figma */
+  --accent-color: #111827; /* texto oscuro */
+  --background-color: #F3F4F6; /* gris claro */
+  --button-hover: #4338CA; /* morado hover */
+  --border-radius-xl2: 1.5rem; /* para cards y botones */
+  --border-radius-3xl: 2rem;
+}

@@ -1,50 +1,110 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../UserContext";
-import Button from "../components/Button";
-import Input from "../components/Input";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const Container = styled.div`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f5e8;
+  font-family: "Poppins", sans-serif;
+`;
+
+const Card = styled.div`
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+`;
+
+const Title = styled.h2`
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+
+  &:focus {
+    border-color: #6c63ff;
+  }
+`;
+
+const Select = styled.select`
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+
+  &:focus {
+    border-color: #6c63ff;
+  }
+`;
+
+const Button = styled.button`
+  width: 100%;
+  padding: 0.9rem;
+  background: #6c63ff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: #5848d6;
+  }
+`;
+
+const FooterText = styled.p`
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+`;
 
 export default function Register() {
-  const { setUserRole, setUserInfo } = useUser();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [childName, setChildName] = useState("");
-  const [childAge, setChildAge] = useState("");
-  const [disabilityPercent, setDisabilityPercent] = useState(70);
-  const [role, setRole] = useState("ayudado");
-  const navigate = useNavigate();
-
-  const handleRegister = (e) => {
-    e.preventDefault();
-    setUserRole(role);
-    setUserInfo({ name, email, childName, childAge, disabilityPercent });
-    navigate("/dashboard");
-  };
-
   return (
-    <div className="flex h-screen items-center justify-center bg-blue-50">
-      <form onSubmit={handleRegister} className="w-96 p-6 bg-white rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Registro Familiar / Voluntario</h1>
-        <Input label="Nombre" value={name} onChange={(e)=>setName(e.target.value)} />
-        <Input label="Email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
-        <Input label="Contraseña" type="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
-        {role === "ayudado" && (
-          <>
-            <Input label="Nombre del niño" value={childName} onChange={(e)=>setChildName(e.target.value)} />
-            <Input label="Edad del niño" type="number" value={childAge} onChange={(e)=>setChildAge(e.target.value)} />
-            <Input label="Porcentaje de discapacidad (%)" type="number" value={disabilityPercent} onChange={(e)=>setDisabilityPercent(e.target.value)} />
-          </>
-        )}
-        <label className="block mt-3 mb-1 font-semibold">Rol</label>
-        <select value={role} onChange={(e)=>setRole(e.target.value)} className="w-full border rounded px-2 py-1 mb-4">
-          <option value="admin">Admin</option>
-          <option value="ayudante">Voluntario</option>
-          <option value="ayudado">Familia</option>
-        </select>
-        <Button type="submit" className="w-full">Registrarse</Button>
-      </form>
-    </div>
+    <Container>
+      <Card>
+        <Title>Registro</Title>
+        <form>
+          <Input type="text" placeholder="Nombre completo" />
+          <Input type="email" placeholder="Correo electrónico" />
+          <Input type="password" placeholder="Contraseña" />
+          <Input type="date" placeholder="Fecha de nacimiento" />
+          <Input type="text" placeholder="DNI / NIE" />
+          <Select>
+            <option value="">Selecciona tu rol</option>
+            
+            <option value="ayudante">Ayudante</option>
+            <option value="ayudado">Ayudado</option>
+          </Select>
+          <Button type="submit">Registrarse</Button>
+        </form>
+        <FooterText>
+          ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
+        </FooterText>
+      </Card>
+    </Container>
   );
 }
+
+
+
 
