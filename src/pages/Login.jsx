@@ -1,44 +1,87 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "../UserContext";
-import Button from "../components/Button";
-import Input from "../components/Input";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const Container = styled.div`
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f9f5e8;
+  font-family: "Poppins", sans-serif;
+`;
+
+const Card = styled.div`
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+`;
+
+const Title = styled.h2`
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+
+  &:focus {
+    border-color: #6c63ff;
+  }
+`;
+
+const Button = styled.button`
+  width: 100%;
+  padding: 0.9rem;
+  background: #6c63ff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: #5848d6;
+  }
+`;
+
+const FooterText = styled.p`
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+`;
 
 export default function Login() {
-  const { setUserRole } = useUser();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("ayudante"); 
-  const navigate = useNavigate();
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log("Login con:", { email, password, role });
-    setUserRole(role); 
-    navigate("/dashboard");
-  };
-
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
-      <form onSubmit={handleLogin} className="w-96 p-6 bg-white rounded-2xl shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Iniciar sesión</h1>
-        <Input label="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
-        <Input label="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
-
-        <label className="block mt-3 mb-1 font-semibold">Rol</label>
-        <select
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          className="w-full border rounded px-2 py-1 mb-4"
-        >
-          <option value="admin">Admin</option>
-          <option value="ayudante">Ayudante</option>
-          <option value="ayudado">Ayudado</option>
-        </select>
-
-        <Button type="submit">Iniciar sesión</Button>
-      </form>
-    </div>
+    <Container>
+      <Card>
+        <Title>Iniciar Sesión</Title>
+        <form>
+          <Input type="email" placeholder="Correo electrónico" />
+          <Input type="password" placeholder="Contraseña" />
+          <Button type="submit">Acceder</Button>
+        </form>
+        <FooterText>
+          ¿No tienes cuenta? <Link to="/register">Regístrate</Link>
+        </FooterText>
+      </Card>
+    </Container>
   );
 }
+
+
+
+
 

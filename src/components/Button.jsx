@@ -14,6 +14,7 @@ const StyledButton = Styled.button`
     padding: 17px 50px;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 10px;
 
     & > img {
         padding-left: 10px;
@@ -27,7 +28,7 @@ const StyledButton = Styled.button`
 const Button = ({ onClick, icon, text }) => {
   return (
     <StyledButton onClick={onClick}>
-      {text} {icon && <img src={icon} alt=" " />}
+      {text} Acceder - {">"}{icon && <img src={icon} alt=" " />}
     </StyledButton>
   );
 };
