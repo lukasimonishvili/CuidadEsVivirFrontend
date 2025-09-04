@@ -1,10 +1,10 @@
 import Styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import LogoImage from "../assets/img/logo.svg";
-import ArrowIcon from "../assets/img/arrow-right.svg";
+import LogoImage from "../../assets/img/logo.svg";
+import ArrowIcon from "../../assets/img/arrow-right.svg";
 import Navigation from "./Navigation";
-import Button from "./Button";
+import Button from "../Button";
 import Burger from "./Burger";
 
 const StyledHeader = Styled.header`
@@ -29,16 +29,18 @@ const StyledLogo = Styled.a`
     align-items: center;
 
     & > span {
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 125.5%;
-        color: #3A3A3A;
-        padding-left: 5px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 125.5%;
+      color: #3A3A3A;
+      padding-left: 5px;
     }
+
 `;
 
 const StyledButtonWrapper = Styled.div`
+    z-index: 4;
     @media screen and (max-width: 980px) {
         transition: 0.3s;
         position: fixed;

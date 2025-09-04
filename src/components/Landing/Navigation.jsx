@@ -29,7 +29,7 @@ const StyledNav = Styled.nav`
             bottom: 4px;
             right: 0;
             transition: 0.3s;
-            z-index: 1;
+            z-index: 2;
         }
 
         &:first-child {
@@ -57,6 +57,7 @@ const StyledNav = Styled.nav`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        z-index: 4;
     }
 `;
 

@@ -5,6 +5,7 @@ const StyledBurger = Styled.div`
   height: 20px;
   position: relative;
   display: none;
+  z-index: 5;
 
   & > div {
     width: 100%;
